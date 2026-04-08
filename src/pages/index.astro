@@ -16,80 +16,108 @@ const faqJsonLd = {
 <Base>
   <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>
 
-  <!-- ====== MARQUEE ====== -->
-  <div class="overflow-hidden bg-ink py-2.5">
-    <div class="flex gap-10 animate-[scroll_25s_linear_infinite] w-max">
-      {[...PROFILS, ...PROFILS, ...PROFILS].map(p => (
-        <span class="text-xs font-bold text-white/25 uppercase tracking-[2px] whitespace-nowrap flex items-center gap-2.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>{p.label}
-        </span>
-      ))}
-    </div>
-  </div>
-
   <!-- ====== NAVBAR ====== -->
   <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-border/50">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between h-16">
       <a href="/" class="font-display text-2xl font-black tracking-tight text-ink">allo<span class="text-brand">malus</span><span class="text-brand">.</span></a>
       <div class="hidden sm:flex items-center gap-7">
         <a href="#profils" class="text-sm text-muted hover:text-brand transition-colors">Profils</a>
-        <a href="#formules" class="text-sm text-muted hover:text-brand transition-colors">Formules</a>
+        <a href="#comment" class="text-sm text-muted hover:text-brand transition-colors">Comment ça marche</a>
         <a href="#faq" class="text-sm text-muted hover:text-brand transition-colors">FAQ</a>
         <a href="/blog/" class="text-sm text-muted hover:text-brand transition-colors">Blog</a>
       </div>
-      <a href="/devis/" class="bg-brand text-white rounded-full px-6 py-2.5 font-bold text-sm tracking-wide hover:-translate-y-1 hover:shadow-lift transition-all hidden sm:inline-flex">
+      <a href="/devis/" class="bg-brand text-white rounded-full px-6 py-2.5 font-bold text-sm hover:-translate-y-0.5 hover:shadow-lift transition-all hidden sm:inline-flex">
         Mon devis gratuit &rarr;
       </a>
     </div>
   </nav>
 
   <!-- ====== HERO ====== -->
-  <section class="relative overflow-hidden">
-    <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-ink via-ink to-brand/20"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,0.15),_transparent_70%)]"></div>
+  <section class="relative overflow-hidden bg-white min-h-[85vh] flex items-center">
+    <!-- Animated gradient blobs -->
+    <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-brand/10 blur-[120px] animate-blob"></div>
+    <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-brand/8 blur-[100px] animate-blob animation-delay-2000"></div>
+    <div class="absolute top-[30%] left-[40%] w-[300px] h-[300px] rounded-full bg-accent/8 blur-[80px] animate-blob animation-delay-4000"></div>
 
-    <div class="relative max-w-3xl mx-auto px-6 text-center py-20 lg:py-32">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-[1.5px] mb-8 border border-white/10">
-        <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
-        Réponse en 24h
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#10B98108_1px,transparent_1px),linear-gradient(to_bottom,#10B98108_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28">
+      <div class="max-w-3xl">
+        <!-- Animated badge -->
+        <div class="inline-flex items-center gap-2 bg-brand-pale border border-brand/20 text-brand-dark px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-[1.5px] mb-8 animate-fade-in-up">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand"></span>
+          </span>
+          Réponse en 24h, 7j/7
+        </div>
+
+        <!-- H1 with staggered animation -->
+        <h1 class="font-display text-[clamp(40px,6vw,72px)] font-black leading-[0.92] tracking-[-3px] mb-6 text-ink animate-fade-in-up animation-delay-200">
+          Refusé partout ?<br/>
+          <span class="font-serif italic font-normal text-brand">On vous assure.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-xl text-muted leading-relaxed max-w-lg mb-10 animate-fade-in-up animation-delay-400">
+          Malussé, résilié, permis suspendu, alcoolémie. Votre assurance auto existe. On la trouve pour vous.
+        </p>
+
+        <!-- CTA group -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-up animation-delay-600">
+          <a href="/devis/" class="group inline-flex items-center justify-center gap-3 bg-brand text-white text-lg px-10 py-5 rounded-full shadow-soft font-bold hover:-translate-y-1 hover:shadow-lift transition-all">
+            Obtenir mon devis gratuit
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <div class="flex items-center gap-3 text-sm text-muted">
+            <div class="flex -space-x-2">
+              {['K','S','D','F'].map((l, i) => (
+                <span class={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold text-white ${['bg-brand','bg-emerald-600','bg-teal-500','bg-green-600'][i]}`}>{l}</span>
+              ))}
+            </div>
+            <span><strong class="text-ink">+850</strong> conducteurs assurés</span>
+          </div>
+        </div>
+
+        <!-- Trust pills -->
+        <div class="flex flex-wrap gap-3 animate-fade-in-up animation-delay-800">
+          {['Devis gratuit','Réponse 24h','100% en ligne','Tous profils acceptés'].map(t => (
+            <span class="inline-flex items-center gap-1.5 bg-white border border-border px-3 py-1.5 rounded-full text-xs font-semibold text-muted shadow-sm">
+              <span class="text-brand">✓</span>{t}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <!-- H1 -->
-      <h1 class="font-display text-[clamp(36px,5.5vw,64px)] font-black leading-[0.95] tracking-[-2.5px] mb-6 text-white">
-        Votre auto assurée,<br/>
-        <span class="font-serif italic font-normal text-brand">même avec un malus.</span>
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="text-lg text-white/60 leading-relaxed max-w-xl mx-auto mb-10">
-        Malussé, résilié, permis suspendu : on trouve votre assurance auto quand les autres refusent. Particuliers et professionnels.
-      </p>
-
-      <!-- CTA -->
-      <a href="/devis/" class="inline-flex items-center gap-2 bg-brand text-white text-lg px-10 py-5 rounded-full shadow-soft tracking-wide hover:-translate-y-1 hover:shadow-lift transition-all font-bold">
-        Obtenir mon devis gratuit &rarr;
-      </a>
-      <p class="text-white/30 text-sm mt-4">Gratuit, sans engagement, 2 minutes</p>
-
-      <!-- Stats -->
-      <div class="flex justify-center gap-10 sm:gap-16 flex-wrap mt-14">
-        {[['0€','Frais de dossier'],['<24h','Réponse'],['100%','En ligne'],['10+','Ans d\'expérience']].map(([val, label]) => (
-          <div class="text-center">
-            <div class="font-display text-3xl font-black tracking-tight"><span class="text-brand" set:html={val}></span></div>
-            <div class="text-xs text-white/40 uppercase tracking-[1.5px] font-bold mt-1">{label}</div>
-          </div>
-        ))}
+      <!-- Floating stats card (desktop) -->
+      <div class="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 w-[280px] animate-float">
+        <div class="bg-white rounded-3xl shadow-lift border border-border/50 p-7">
+          <p class="text-xs font-extrabold uppercase tracking-[2px] text-brand mb-5">Pourquoi nous</p>
+          {[
+            ['<24h', 'Délai de réponse'],
+            ['100%', 'Taux d\'acceptation'],
+            ['10+', 'Ans d\'expérience'],
+            ['850+', 'Conducteurs assurés'],
+          ].map(([val, label]) => (
+            <div class="flex items-center gap-3 py-2.5 border-b border-border/50 last:border-0">
+              <span class="font-display text-xl font-black text-brand w-16">{val}</span>
+              <span class="text-xs text-muted font-medium">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== TRUST BAR ====== -->
-  <div class="bg-brand-pale flex justify-center gap-10 flex-wrap py-5">
-    {['🛡️ Courtier ORIAS','✓ Tous profils acceptés','🔒 Données sécurisées','⚡ Réponse 24h','📋 0 frais'].map(t => (
-      <span class="text-sm font-bold text-ink/50">{t}</span>
-    ))}
+  <!-- ====== URGENCY BAR ====== -->
+  <div class="bg-ink text-white py-4">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-center gap-8 flex-wrap text-sm font-medium">
+      <span class="flex items-center gap-2"><span class="text-brand">●</span> Assureur vous a résilié ?</span>
+      <span class="flex items-center gap-2"><span class="text-brand">●</span> Malus qui grimpe ?</span>
+      <span class="flex items-center gap-2"><span class="text-brand">●</span> Permis récupéré ?</span>
+      <a href="/devis/" class="text-brand font-bold hover:underline">On a la solution &rarr;</a>
+    </div>
   </div>
 
   <!-- ====== PROFILS ====== -->
@@ -97,14 +125,15 @@ const faqJsonLd = {
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-14">
         <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Votre situation</p>
-        <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.95] text-ink">On assure <span class="font-serif italic font-normal text-brand">tous</span> les profils</h2>
+        <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.95] text-ink">Quel que soit votre profil,<br/><span class="font-serif italic font-normal text-brand">on a une réponse.</span></h2>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        {PROFILS.map(p => (
-          <a href="/devis/" class="bg-white border border-border rounded-2xl p-5 text-center hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block group">
-            <span class="text-3xl block mb-3">{p.emoji}</span>
-            <span class="text-sm font-semibold text-ink group-hover:text-brand transition-colors">{p.label}</span>
-            <p class="text-[11px] text-muted mt-1 leading-snug">{p.desc}</p>
+        {PROFILS.map((p, i) => (
+          <a href="/devis/" class="reveal-card bg-white border border-border rounded-2xl p-5 text-center hover:-translate-y-2 hover:shadow-lift hover:border-brand/40 transition-all duration-300 block group" style={`animation-delay: ${i * 80}ms`}>
+            <span class="text-4xl block mb-3 group-hover:scale-110 transition-transform">{p.emoji}</span>
+            <span class="text-sm font-bold text-ink group-hover:text-brand transition-colors block">{p.label}</span>
+            <p class="text-[10px] text-muted mt-1.5 leading-tight">{p.desc}</p>
+            <span class="mt-3 text-brand text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity block">Devis &rarr;</span>
           </a>
         ))}
       </div>
@@ -112,108 +141,59 @@ const faqJsonLd = {
   </section>
 
   <!-- ====== COMMENT CA MARCHE ====== -->
-  <section class="bg-surface py-24 lg:py-32">
+  <section id="comment" class="bg-surface py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Simple et rapide</p>
-      <h2 class="font-display text-[clamp(30px,4vw,44px)] font-black tracking-[-2px] leading-[0.95] mb-3 text-ink">4 étapes. C'est tout.</h2>
-      <p class="text-base text-muted max-w-md mb-12">Du formulaire a l'attestation, tout se passe en ligne.</p>
+      <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Simple</p>
+      <h2 class="font-display text-[clamp(30px,4vw,44px)] font-black tracking-[-2px] leading-[0.95] mb-3 text-ink">4 étapes. <span class="font-serif italic font-normal text-brand">C'est tout.</span></h2>
+      <p class="text-base text-muted max-w-md mb-12">Du formulaire a votre carte verte, tout se passe en ligne.</p>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          ['01','📋','Formulaire','Votre profil, votre véhicule, votre historique. 2 minutes, depuis votre téléphone.'],
-          ['02','🔍','Analyse','Nos experts étudient votre dossier et consultent nos assureurs partenaires.'],
-          ['03','📩','Proposition','Vous recevez une ou plusieurs offres adaptées a votre profil sous 24h.'],
-          ['04','✅','Couvert','Vous choisissez, vous signez en ligne, vous roulez. Attestation immédiate.'],
-        ].map(([n, ico, title, desc]) => (
-          <div class="bg-white border border-border rounded-2xl p-7 hover:-translate-y-1 hover:shadow-soft transition-all">
-            <span class="text-5xl font-black text-brand/15 tracking-[-3px] leading-none block mb-3">{n}</span>
-            <span class="text-2xl block mb-3">{ico}</span>
+          ['01','📋','Votre demande','Profil, véhicule, historique. 2 minutes chrono, depuis votre téléphone.'],
+          ['02','🔍','Notre analyse','Nos experts consultent nos assureurs partenaires pour trouver la meilleure offre.'],
+          ['03','📩','Votre proposition','Une ou plusieurs offres adaptées dans votre boite mail sous 24h.'],
+          ['04','🚗','Vous roulez','Vous choisissez, vous signez en ligne. Carte verte immédiate.'],
+        ].map(([n, ico, title, desc], i) => (
+          <div class="reveal-card bg-white border border-border rounded-2xl p-7 hover:-translate-y-1 hover:shadow-soft transition-all group" style={`animation-delay: ${i * 100}ms`}>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-full bg-brand-pale text-brand font-display text-sm font-black flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors">{n}</span>
+              <span class="text-2xl">{ico}</span>
+            </div>
             <h3 class="font-display text-base font-extrabold tracking-[-0.3px] mb-2 text-ink">{title}</h3>
             <p class="text-sm text-muted leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- ====== FORMULES ====== -->
-  <section id="formules" class="bg-white py-24 lg:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Nos formules</p>
-        <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.95] text-ink">La couverture qu'il vous <span class="font-serif italic font-normal text-brand">faut</span></h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
-        <!-- Tiers -->
-        <div class="bg-white border border-border rounded-3xl p-8 hover:-translate-y-1 hover:shadow-soft transition-all">
-          <p class="text-xs font-extrabold uppercase tracking-[1.5px] text-muted mb-2">Tiers</p>
-          <p class="font-display text-lg font-black text-ink mb-1">Minimum légal</p>
-          <p class="text-sm text-muted mb-6">L'essentiel pour rouler en règle</p>
-          {['Responsabilité civile','Défense pénale','Assistance panne 0 km','Protection juridique'].map(f => (
-            <p class="text-sm py-1.5 flex items-center gap-2.5 text-ink/70 font-medium">
-              <span class="text-brand font-bold">✓</span>{f}
-            </p>
-          ))}
-          <a href="/devis/" class="block mt-6 w-full py-3 rounded-full bg-surface text-ink text-center font-bold text-sm hover:bg-brand hover:text-white transition-all">
-            Demander un devis
-          </a>
-        </div>
-
-        <!-- Tiers+ -->
-        <div class="bg-white border-2 border-brand rounded-3xl p-8 relative shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-white px-4 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-[1px]">Le plus demandé</div>
-          <p class="text-xs font-extrabold uppercase tracking-[1.5px] text-brand mb-2">Tiers +</p>
-          <p class="font-display text-lg font-black text-ink mb-1">Protection étendue</p>
-          <p class="text-sm text-muted mb-6">Le meilleur rapport couverture/prix</p>
-          {['Tout Tiers inclus','Vol et tentative de vol','Incendie et explosion','Bris de glace','Catastrophes naturelles'].map(f => (
-            <p class="text-sm py-1.5 flex items-center gap-2.5 text-ink/70 font-medium">
-              <span class="text-brand font-bold">✓</span>{f}
-            </p>
-          ))}
-          <a href="/devis/" class="block mt-6 w-full py-3 rounded-full bg-brand text-white text-center font-bold text-sm hover:-translate-y-0.5 hover:shadow-lift transition-all">
-            Demander un devis &rarr;
-          </a>
-        </div>
-
-        <!-- Tous risques -->
-        <div class="bg-white border border-border rounded-3xl p-8 hover:-translate-y-1 hover:shadow-soft transition-all">
-          <p class="text-xs font-extrabold uppercase tracking-[1.5px] text-muted mb-2">Tous risques</p>
-          <p class="font-display text-lg font-black text-ink mb-1">Protection maximale</p>
-          <p class="text-sm text-muted mb-6">La tranquillité totale</p>
-          {['Tout Tiers+ inclus','Dommages tous accidents','Valeur a neuf 1 an','Véhicule de remplacement','Contenu du véhicule'].map(f => (
-            <p class="text-sm py-1.5 flex items-center gap-2.5 text-ink/70 font-medium">
-              <span class="text-brand font-bold">✓</span>{f}
-            </p>
-          ))}
-          <a href="/devis/" class="block mt-6 w-full py-3 rounded-full bg-surface text-ink text-center font-bold text-sm hover:bg-brand hover:text-white transition-all">
-            Demander un devis
-          </a>
-        </div>
+      <!-- Mid-page CTA -->
+      <div class="text-center mt-14">
+        <a href="/devis/" class="inline-flex items-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-bold text-base hover:-translate-y-1 hover:shadow-lift transition-all shadow-soft animate-pulse-subtle">
+          Commencer mon devis &rarr;
+        </a>
+        <p class="text-xs text-muted mt-3">Gratuit, sans engagement, 2 minutes</p>
       </div>
     </div>
   </section>
 
-  <!-- ====== AVIS ====== -->
-  <section class="bg-surface py-24 lg:py-32">
+  <!-- ====== SOCIAL PROOF ====== -->
+  <section class="bg-white py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Avis</p>
-      <div class="flex items-center gap-3 mb-12">
-        <h2 class="font-display text-[clamp(30px,4vw,44px)] font-black tracking-[-2px] leading-[0.95] text-ink">Ils étaient dans l'impasse.</h2>
-      </div>
+      <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Témoignages</p>
+      <h2 class="font-display text-[clamp(30px,4vw,44px)] font-black tracking-[-2px] leading-[0.95] mb-12 text-ink">Ils étaient <span class="font-serif italic font-normal text-brand">dans l'impasse.</span></h2>
+
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {[
-          ['"Après 3 refus, Allomalus m\'a trouvé une offre en 48h. Je ne pensais pas que c\'était encore possible."','Karim B.','Malussé 1.75'],
-          ['"Mon assureur m\'a résiliée après un accident responsable. Allomalus a repris mon dossier sans jugement. Merci."','Sophie M.','Résiliée'],
-          ['"Suspension de 6 mois pour excès de vitesse. A la récupération du permis, impossible de m\'assurer. Sauf ici."','David T.','Permis suspendu'],
-          ['"Permis depuis 2 ans et déjà un malus. Personne ne voulait de moi. Allomalus a trouvé une solution correcte."','Fatima L.','Jeune conductrice'],
-          ['"Mon utilitaire résilié, c\'était la galère pour bosser. Devis reçu le lendemain, couvert dans la semaine."','Stéphane R.','Artisan BTP'],
-        ].map(([txt, name, profil]) => (
+          ['"Après 3 refus, Allomalus m\'a trouvé une offre en 48h. Je ne pensais pas que c\'était encore possible."','Karim B.','Malussé 1.75','KB'],
+          ['"Mon assureur m\'a résiliée après un accident responsable. Ici, pas de jugement. Juste une solution."','Sophie M.','Résiliée','SM'],
+          ['"Suspension de 6 mois pour excès de vitesse. A la récupération du permis, impossible de m\'assurer. Sauf ici."','David T.','Permis suspendu','DT'],
+          ['"Permis depuis 2 ans et déjà un malus. Personne ne voulait de moi. Allomalus a trouvé une solution correcte."','Fatima L.','Jeune conductrice','FL'],
+          ['"Mon utilitaire résilié, c\'était la galère pour bosser. Devis reçu le lendemain, couvert dans la semaine."','Stéphane R.','Artisan BTP','SR'],
+        ].map(([txt, name, profil, initials]) => (
           <div class="bg-white border border-border rounded-2xl p-6 hover:-translate-y-1 hover:shadow-soft hover:border-brand/20 transition-all group">
             <div class="text-brand text-sm tracking-[2px] mb-3">★★★★★</div>
-            <p class="text-sm text-ink leading-relaxed mb-4 font-medium">{txt}</p>
+            <p class="text-sm text-ink leading-relaxed mb-5 font-medium">{txt}</p>
             <div class="flex items-center gap-3">
-              <span class="w-9 h-9 rounded-full bg-brand-pale flex items-center justify-center text-[11px] font-bold text-brand">{name.charAt(0)}{name.split(' ')[1]?.charAt(0)}</span>
+              <span class="w-10 h-10 rounded-full bg-brand-pale flex items-center justify-center text-xs font-bold text-brand">{initials}</span>
               <div>
                 <p class="text-sm text-ink font-semibold group-hover:text-brand transition-colors">{name}</p>
                 <p class="text-xs text-muted">{profil}</p>
@@ -226,28 +206,42 @@ const faqJsonLd = {
   </section>
 
   <!-- ====== COMPARATIF ====== -->
-  <section class="bg-white py-24 lg:py-32">
+  <section class="bg-surface py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-14">
-        <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">Comparatif</p>
-        <h2 class="font-display text-[clamp(30px,4vw,40px)] font-black text-ink tracking-[-1.5px]">Faites la différence.</h2>
+        <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">La différence</p>
+        <h2 class="font-display text-[clamp(30px,4vw,40px)] font-black text-ink tracking-[-1.5px]">Pourquoi passer par <span class="font-serif italic font-normal text-brand">Allomalus</span> ?</h2>
       </div>
       <div class="grid md:grid-cols-2 gap-5 max-w-2xl mx-auto">
         <!-- Ailleurs -->
-        <div class="bg-surface border border-border rounded-3xl p-9 relative">
+        <div class="bg-white border border-border rounded-3xl p-9 relative">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-ink/60 text-white px-4 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-[1px]">Ailleurs</div>
           <p class="text-xs font-extrabold uppercase tracking-[1.5px] text-ink/30 mb-6">Assureur classique</p>
-          {['✗ Frais de dossier','✗ Réponse en 5 a 10 jours','✗ Profils refusés fréquemment','✗ Suivi standardisé','✗ Déplacement en agence','✗ Vous gérez les sinistres seul'].map(f => (
+          {[
+            '✗ Réponse en 5 a 10 jours',
+            '✗ Profils refusés fréquemment',
+            '✗ Suivi standardisé, pas de contact dédié',
+            '✗ Déplacement en agence obligatoire',
+            '✗ Vous gérez les sinistres seul',
+            '✗ Formulaires papier, courriers recommandés',
+          ].map(f => (
             <p class="text-sm py-1.5 flex items-center gap-2.5 text-ink/30 font-medium">
-              <span class="text-red-400 font-bold">{f.charAt(0)}</span>{f.slice(2)}
+              <span class="text-red-400 font-bold">✗</span>{f.slice(2)}
             </p>
           ))}
         </div>
         <!-- Allomalus -->
         <div class="bg-white border-2 border-brand rounded-3xl p-9 relative shadow-soft">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-white px-4 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-[1px]">Allomalus</div>
-          <p class="text-xs font-extrabold uppercase tracking-[1.5px] text-brand mb-6">Courtier spécialisé</p>
-          {['Aucun frais de dossier','Réponse en moins de 24h','Tous les profils acceptés','Expert dédié a votre dossier','100% en ligne, depuis chez vous','On gère les sinistres pour vous'].map(f => (
+          <p class="text-xs font-extrabold uppercase tracking-[1.5px] text-brand mb-6">Courtier spécialisé malus</p>
+          {[
+            'Réponse en moins de 24h',
+            'Tous les profils sont acceptés',
+            'Expert dédié a votre dossier',
+            '100% en ligne, depuis chez vous',
+            'On gère les sinistres pour vous',
+            'Signature électronique, carte verte immédiate',
+          ].map(f => (
             <p class="text-sm py-1.5 flex items-center gap-2.5 text-ink/70 font-medium">
               <span class="text-brand font-bold">✓</span>{f}
             </p>
@@ -261,7 +255,7 @@ const faqJsonLd = {
   </section>
 
   <!-- ====== FAQ ====== -->
-  <section id="faq" class="bg-surface py-24 lg:py-32">
+  <section id="faq" class="bg-white py-24 lg:py-32">
     <div class="max-w-3xl mx-auto px-6">
       <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-4">FAQ</p>
       <h2 class="font-display text-[clamp(30px,4vw,44px)] font-black tracking-[-2px] leading-[0.95] mb-12 text-ink">Vos questions.</h2>
@@ -279,38 +273,37 @@ const faqJsonLd = {
     </div>
   </section>
 
-  <!-- ====== BOTTOM CTA ====== -->
-  <section class="bg-ink py-24 lg:py-32">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.95] mb-5 text-white">
-        Prêt a rouler <span class="font-serif italic font-normal text-brand">sereinement</span> ?
+  <!-- ====== FINAL CTA ====== -->
+  <section class="relative overflow-hidden py-24 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1),transparent_70%)]"></div>
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-display text-[clamp(30px,4.5vw,52px)] font-black tracking-[-2px] leading-[0.95] mb-5 text-white">
+        Prêt a reprendre la route<br/><span class="font-serif italic font-normal text-white/80">sereinement</span> ?
       </h2>
-      <p class="text-base text-white/50 max-w-md mx-auto mb-10">Malussé, résilié, permis suspendu : peu importe votre situation. On trouve une solution. Toujours.</p>
-      <a href="/devis/" class="inline-flex items-center gap-2 bg-brand text-white px-10 py-5 rounded-full font-bold text-lg tracking-wide hover:-translate-y-1 hover:shadow-lift transition-all shadow-soft">
+      <p class="text-base text-white/70 max-w-md mx-auto mb-10">Malussé, résilié, suspendu : peu importe. On trouve une assurance pour vous. Toujours.</p>
+      <a href="/devis/" class="inline-flex items-center gap-2 bg-white text-brand px-10 py-5 rounded-full font-bold text-lg tracking-wide hover:-translate-y-1 hover:shadow-lift transition-all shadow-soft">
         Obtenir mon devis gratuit &rarr;
       </a>
+      <p class="text-white/40 text-sm mt-4">Gratuit, sans engagement, 2 minutes</p>
     </div>
   </section>
 
   <!-- ====== PARTENAIRES ====== -->
-  <section class="bg-white py-16 lg:py-20 border-t border-border">
+  <section class="bg-white py-14 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
-      <p class="text-xs font-extrabold uppercase tracking-[3px] text-brand mb-8">Nos partenaires</p>
       <div class="grid sm:grid-cols-3 gap-4">
-        <a href="https://prossur.fr" target="_blank" rel="noopener" class="group bg-white border border-border rounded-2xl p-6 hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block">
-          <h3 class="font-display text-base font-extrabold text-ink group-hover:text-brand transition-colors mb-2">🏗️ Décennale artisan BTP</h3>
-          <p class="text-sm text-muted leading-relaxed">Prossur assure les artisans du bâtiment : décennale, RC pro, dès 69 €/mois.</p>
-          <span class="text-brand text-sm font-bold mt-3 inline-block">prossur.fr &rarr;</span>
+        <a href="https://prossur.fr" target="_blank" rel="noopener" class="group bg-white border border-border rounded-2xl p-5 hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block">
+          <h3 class="font-display text-sm font-extrabold text-ink group-hover:text-brand transition-colors mb-1">🏗️ Décennale artisan BTP</h3>
+          <p class="text-xs text-muted leading-relaxed">Prossur assure les artisans du bâtiment.</p>
         </a>
-        <a href="https://formacourtage.fr" target="_blank" rel="noopener" class="group bg-white border border-border rounded-2xl p-6 hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block">
-          <h3 class="font-display text-base font-extrabold text-ink group-hover:text-brand transition-colors mb-2">🎓 Devenir courtier</h3>
-          <p class="text-sm text-muted leading-relaxed">FormaCourtage : la formation IAS 150h pour obtenir votre capacité professionnelle.</p>
-          <span class="text-brand text-sm font-bold mt-3 inline-block">formacourtage.fr &rarr;</span>
+        <a href="https://formacourtage.fr" target="_blank" rel="noopener" class="group bg-white border border-border rounded-2xl p-5 hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block">
+          <h3 class="font-display text-sm font-extrabold text-ink group-hover:text-brand transition-colors mb-1">🎓 Devenir courtier</h3>
+          <p class="text-xs text-muted leading-relaxed">Formation IAS 150h en ligne.</p>
         </a>
-        <a href="/blog/" class="group bg-white border border-border rounded-2xl p-6 hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block">
-          <h3 class="font-display text-base font-extrabold text-ink group-hover:text-brand transition-colors mb-2">📖 Nos guides</h3>
-          <p class="text-sm text-muted leading-relaxed">Malus, résiliation, bonus-malus : tout comprendre sur l'assurance auto.</p>
-          <span class="text-brand text-sm font-bold mt-3 inline-block">Lire le blog &rarr;</span>
+        <a href="/blog/" class="group bg-white border border-border rounded-2xl p-5 hover:-translate-y-1 hover:shadow-soft hover:border-brand/30 transition-all block">
+          <h3 class="font-display text-sm font-extrabold text-ink group-hover:text-brand transition-colors mb-1">📖 Nos guides</h3>
+          <p class="text-xs text-muted leading-relaxed">Malus, résiliation, bonus-malus.</p>
         </a>
       </div>
     </div>
@@ -321,12 +314,11 @@ const faqJsonLd = {
     <div class="max-w-6xl mx-auto px-6 text-center">
       <div class="font-display text-2xl font-black text-white mb-3">allo<span class="text-brand">malus</span><span class="text-brand">.</span></div>
       <p class="text-sm text-white/40 max-w-sm mx-auto leading-relaxed mb-10">Courtier spécialisé en assurance auto pour conducteurs malussés et résiliés.</p>
-
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-8 max-w-2xl mx-auto pb-10 border-b border-white/10 text-left">
         <div>
           <h5 class="text-[10px] uppercase tracking-[1.5px] text-white/30 font-bold mb-4">Navigation</h5>
           <a href="#profils" class="block text-sm text-white/40 mb-2 hover:text-brand transition-colors">Profils</a>
-          <a href="#formules" class="block text-sm text-white/40 mb-2 hover:text-brand transition-colors">Formules</a>
+          <a href="#comment" class="block text-sm text-white/40 mb-2 hover:text-brand transition-colors">Comment ça marche</a>
           <a href="#faq" class="block text-sm text-white/40 mb-2 hover:text-brand transition-colors">FAQ</a>
           <a href="/blog/" class="block text-sm text-white/40 mb-2 hover:text-brand transition-colors">Blog</a>
         </div>
@@ -345,7 +337,6 @@ const faqJsonLd = {
           <a href="/devis/" class="block text-sm text-white/40 mb-2 hover:text-brand transition-colors">Demander un devis</a>
         </div>
       </div>
-
       <p class="text-xs text-white/30 pt-5">&copy; {new Date().getFullYear()} Allomalus · SIREN {SITE.siren} · ORIAS n&deg;{SITE.orias} · Courtier en assurance</p>
     </div>
   </footer>
@@ -357,7 +348,63 @@ const faqJsonLd = {
     </a>
   </div>
 
+  <!-- ====== ANIMATIONS ====== -->
   <style>
-    @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes blob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -50px) scale(1.1); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(15px, 40px) scale(1.05); }
+    }
+    .animate-blob { animation: blob 12s ease-in-out infinite; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-4000 { animation-delay: 4s; }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; opacity: 0; }
+    .animation-delay-200 { animation-delay: 0.2s; }
+    .animation-delay-400 { animation-delay: 0.4s; }
+    .animation-delay-600 { animation-delay: 0.6s; }
+    .animation-delay-800 { animation-delay: 0.8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(calc(-50% - 12px)) translateX(5px); }
+    }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+
+    @keyframes pulse-subtle {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+    }
+    .animate-pulse-subtle { animation: pulse-subtle 2.5s ease-in-out infinite; }
+
+    /* Scroll reveal */
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-in-up 0.6s ease-out forwards;
+    }
   </style>
+
+  <!-- Intersection observer for scroll animations -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      observer.observe(el);
+    });
+  </script>
 </Base>
