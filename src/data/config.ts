@@ -21,10 +21,10 @@ export const PROFILS = [
 ];
 
 export const VEHICULES = [
-  { id: 'auto', label: 'Voiture', emoji: '🚗', desc: 'Citadine, berline, SUV, coupé', from: '45' },
-  { id: 'utilitaire', label: 'Utilitaire', emoji: '🚐', desc: 'Fourgon, camionnette, pick-up', from: '55' },
-  { id: 'moto', label: 'Moto / Scooter', emoji: '🏍️', desc: '50cc a gros cube, scooter, trail', from: '35' },
-  { id: 'camping-car', label: 'Camping-car', emoji: '🏕️', desc: 'Fourgon aménagé, camping-car', from: '60' },
+  { id: 'auto', label: 'Voiture', desc: 'Citadine, berline, SUV, coupé', from: '45' },
+  { id: 'utilitaire', label: 'Utilitaire', desc: 'Fourgon, camionnette, pick-up', from: '55' },
+  { id: 'moto', label: 'Moto / Scooter', desc: '50cc a gros cube, scooter, trail', from: '35' },
+  { id: 'camping-car', label: 'Camping-car', desc: 'Fourgon aménagé, camping-car', from: '60' },
 ];
 
 export const FAQ_ITEMS = [

@@ -114,9 +114,8 @@ const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${enc
 
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {VEHICULES.map(v => (
-          <a href="/devis/" class="group border border-border rounded-xl p-6 hover:border-brand hover:-translate-y-1 hover:shadow-soft transition-all block text-center">
-            <span class="text-4xl block mb-3 group-hover:scale-110 transition-transform">{v.emoji}</span>
-            <h3 class="font-display text-lg font-bold text-ink">{v.label}</h3>
+          <a href="/devis/" class="group border border-border rounded-xl p-6 hover:border-brand hover:-translate-y-1 hover:shadow-soft transition-all block">
+            <h3 class="font-display text-lg font-bold text-ink group-hover:text-brand transition-colors">{v.label}</h3>
             <p class="text-xs text-muted mt-1 mb-3">{v.desc}</p>
             <p class="text-sm font-bold text-brand">A partir de {v.from} €/mois</p>
           </a>
@@ -136,8 +135,7 @@ const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${enc
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
         {PROFILS.map(p => (
           <a href="/devis/" class="group bg-white border border-border rounded-xl p-6 hover:border-brand transition-all block">
-            <span class="text-3xl block mb-3">{p.emoji}</span>
-            <h3 class="font-display text-base font-bold text-ink">{p.label}</h3>
+            <h3 class="font-display text-base font-bold text-ink group-hover:text-brand transition-colors">{p.label}</h3>
             <p class="text-sm text-muted mt-1">{p.desc}</p>
             <span class="text-brand text-sm font-bold mt-3 block opacity-0 group-hover:opacity-100 transition-opacity">Devis gratuit &rarr;</span>
           </a>
