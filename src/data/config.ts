@@ -50,6 +50,6 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Quels documents fournir pour un devis ?",
-    a: "Permis de conduire, carte grise, relevé d'information (demandez-le a votre ancien assureur, il est obligé de vous le fournir), et éventuellement le courrier de résiliation. Avec ces 4 documents, on peut vous faire un devis en 24h.",
+    a: "Permis de conduire, carte grise, relevé d'information (demandez-le a votre ancien assureur, il est obligé de vous le fournir), et éventuellement le courrier de résiliation. Avec ces 4 documents, on peut traiter votre demande rapidement.",
   },
 ];

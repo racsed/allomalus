@@ -96,7 +96,7 @@ export default function DevisAutoForm() {
         <div className="text-5xl mb-4">✅</div>
         <h3 className="font-display text-2xl font-bold text-ink mb-2">Demande envoyée</h3>
         <p className="text-muted max-w-md mx-auto">
-          Votre demande de devis auto a été transmise. Vous recevrez une proposition par email sous 24h ouvrées.
+          Votre demande de devis auto a été transmise. Vous recevrez une proposition par email dans les meilleurs délais.
         </p>
       </div>
     );
@@ -223,7 +223,7 @@ export default function DevisAutoForm() {
         {submitting ? 'Envoi en cours...' : etape === 4 ? 'Recevoir mon devis gratuit' : 'Continuer'}
       </button>
 
-      <p className="text-center text-[10px] text-muted mt-3">Gratuit, sans engagement, réponse sous 24h</p>
+      <p className="text-center text-[10px] text-muted mt-3">Gratuit, sans engagement</p>
     </div>
   );
 }
