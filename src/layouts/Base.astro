@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import { SITE } from '../data/config';
+interface Props { title?: string; description?: string; canonical?: string; }
+const {
+  title = `Assurance auto malussé et résilié | ${SITE.name}`,
+  description = `Assurance auto pour conducteurs malussés, résiliés, permis suspendu. Devis en ligne, réponse 24h. Particuliers et professionnels.`,
+  canonical = SITE.url,
+} = Astro.props;
+const canonicalUrl = canonical.endsWith('/') ? canonical : `${canonical}/`;
+---
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" hreflang="fr" href={canonicalUrl} />
+  <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+  <meta http-equiv="content-language" content="fr" />
+  <meta name="geo.region" content="FR" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="allomalus." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="theme-color" content="#F97316" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <slot name="head" />
+  <style is:global>
+    @font-face { font-family: 'Satoshi'; src: url('/fonts/Satoshi-Variable.woff2') format('woff2'); font-weight: 400 900; font-display: swap; }
+    @font-face { font-family: 'Instrument Serif'; src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Instrument Serif'; src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
+  </style>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "Allomalus",
+    "url": SITE.url,
+    "description": "Courtier spécialisé en assurance auto pour conducteurs malussés et résiliés",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "35 allée des Impressionnistes",
+      "addressLocality": "Villepinte",
+      "postalCode": "93420",
+      "addressCountry": "FR"
+    },
+    "telephone": "+33185105667",
+    "email": SITE.email,
+    "areaServed": { "@type": "Country", "name": "France" }
+  })}></script>
+</head>
+<body class="font-body text-ink bg-white antialiased overflow-x-hidden">
+  <slot />
+</body>
+</html>

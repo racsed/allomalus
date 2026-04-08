@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/config';
+---
+
+<Base
+  title={`Mentions légales | ${SITE.name}`}
+  description="Mentions légales du site allomalus.fr - Courtier en assurance auto pour conducteurs malussés et résiliés."
+  canonical={`${SITE.url}/mentions-legales`}
+>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 h-16">
+      <a href="/" class="font-display font-black text-xl text-ink tracking-tight">
+        {SITE.name}
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/blog/" class="text-sm font-body text-muted hover:text-ink transition-colors">Blog</a>
+        <a
+          href="/devis/"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-orange-500 text-white text-sm font-display font-bold hover:bg-orange-600 transition-colors"
+        >
+          Devis gratuit
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-12 md:py-16">
+    <h1 class="font-display font-black text-3xl md:text-4xl text-ink mb-10">Mentions légales</h1>
+
+    <div class="space-y-10 font-body text-ink/80 text-[15px] leading-relaxed">
+
+      <!-- Editeur -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Editeur du site</h2>
+        <p>
+          Le site <strong class="text-ink">allomalus.fr</strong> est édité par :
+        </p>
+        <ul class="mt-3 space-y-1">
+          <li><strong class="text-ink">Raison sociale :</strong> Allomalus</li>
+          <li><strong class="text-ink">Forme juridique :</strong> Entreprise individuelle</li>
+          <li><strong class="text-ink">Responsable de la publication :</strong> {SITE.director}</li>
+          <li><strong class="text-ink">SIREN :</strong> {SITE.siren}</li>
+          <li><strong class="text-ink">Siège social :</strong> {SITE.address}</li>
+          <li><strong class="text-ink">Téléphone :</strong> {SITE.phone}</li>
+          <li><strong class="text-ink">Email :</strong> <a href={`mailto:${SITE.email}`} class="text-orange-500 hover:underline">{SITE.email}</a></li>
+        </ul>
+      </section>
+
+      <!-- Hébergeur -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Hébergeur</h2>
+        <ul class="space-y-1">
+          <li><strong class="text-ink">Raison sociale :</strong> Netlify, Inc.</li>
+          <li><strong class="text-ink">Siège social :</strong> 512 2nd Street, Suite 200, San Francisco, CA 94107, USA</li>
+          <li><strong class="text-ink">Site web :</strong> <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">www.netlify.com</a></li>
+        </ul>
+      </section>
+
+      <!-- Activité réglementée -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Activité réglementée - Courtage en assurance</h2>
+        <p>
+          Allomalus exerce l'activité de courtier en assurance conformément au Livre V du Code des assurances.
+        </p>
+        <ul class="mt-3 space-y-1">
+          <li><strong class="text-ink">Numéro ORIAS :</strong> {SITE.orias}</li>
+          <li><strong class="text-ink">Catégorie :</strong> Courtier en assurance (COA)</li>
+          <li><strong class="text-ink">Vérification :</strong> <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">www.orias.fr</a></li>
+        </ul>
+        <p class="mt-3">
+          L'ORIAS (Organisme pour le Registre unique des Intermédiaires en Assurance, Banque et Finance) est l'organisme chargé de la tenue du registre des intermédiaires en assurance, en application de l'article L. 512-1 du Code des assurances.
+        </p>
+        <p class="mt-2">
+          Allomalus est soumis au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR) - 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.
+        </p>
+      </section>
+
+      <!-- Garantie financière et RC Pro -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Garantie financière et responsabilité civile professionnelle</h2>
+        <p>
+          Conformément aux articles L. 512-6 et L. 512-7 du Code des assurances, Allomalus dispose d'une garantie financière et d'une assurance de responsabilité civile professionnelle couvrant les conséquences pécuniaires de sa responsabilité civile professionnelle.
+        </p>
+      </section>
+
+      <!-- Médiation -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Médiation</h2>
+        <p>
+          En cas de litige, vous pouvez adresser une réclamation écrite à Allomalus à l'adresse postale ou email mentionnée ci-dessus. Si le désaccord persiste, vous pouvez saisir le Médiateur de l'Assurance :
+        </p>
+        <ul class="mt-3 space-y-1">
+          <li><strong class="text-ink">La Médiation de l'Assurance</strong></li>
+          <li>TSA 50110, 75441 Paris Cedex 09</li>
+          <li>Site : <a href="https://www.mediation-assurance.org" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">www.mediation-assurance.org</a></li>
+        </ul>
+      </section>
+
+      <!-- Propriété intellectuelle -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Propriété intellectuelle</h2>
+        <p>
+          L'ensemble des contenus présents sur le site allomalus.fr (textes, images, logos, icônes, mise en page, logiciels, etc.) est protégé par le droit de la propriété intellectuelle et reste la propriété exclusive d'Allomalus, sauf mention contraire.
+        </p>
+        <p class="mt-2">
+          Toute reproduction, représentation, modification, publication, transmission ou dénaturation, totale ou partielle, du site ou de son contenu, par quelque procédé que ce soit et sur quelque support que ce soit, est interdite sans l'autorisation écrite préalable d'Allomalus.
+        </p>
+      </section>
+
+      <!-- Données personnelles -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Données personnelles</h2>
+        <p>
+          Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés du 6 janvier 1978, vous disposez d'un droit d'accès, de rectification, de suppression, de limitation et de portabilité de vos données personnelles.
+        </p>
+        <p class="mt-2">
+          Les données collectées via le formulaire de devis sont utilisées exclusivement pour le traitement de votre demande d'assurance. Elles ne sont transmises qu'aux compagnies d'assurance partenaires dans le cadre de l'obtention de votre devis.
+        </p>
+        <p class="mt-2">
+          <strong class="text-ink">Responsable du traitement :</strong> {SITE.director}
+        </p>
+        <p class="mt-2">
+          <strong class="text-ink">Durée de conservation :</strong> les données sont conservées pendant la durée nécessaire au traitement de votre demande, et au maximum 3 ans à compter du dernier contact.
+        </p>
+        <p class="mt-2">
+          Pour exercer vos droits, contactez-nous par email à <a href={`mailto:${SITE.email}`} class="text-orange-500 hover:underline">{SITE.email}</a> ou par courrier à l'adresse du siège social.
+        </p>
+        <p class="mt-2">
+          Vous pouvez également introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">www.cnil.fr</a>
+        </p>
+      </section>
+
+      <!-- Cookies -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Cookies</h2>
+        <p>
+          Le site allomalus.fr utilise des cookies strictement nécessaires au fonctionnement du site. Des cookies d'analyse de fréquentation peuvent être utilisés pour mesurer l'audience du site.
+        </p>
+        <p class="mt-2">
+          Vous pouvez configurer votre navigateur pour refuser les cookies. Toutefois, certaines fonctionnalités du site pourraient ne plus être accessibles.
+        </p>
+        <p class="mt-2">
+          Pour en savoir plus sur les cookies, vous pouvez consulter le site de la CNIL : <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">www.cnil.fr/fr/cookies-et-autres-traceurs</a>
+        </p>
+      </section>
+
+      <!-- Limitation de responsabilité -->
+      <section>
+        <h2 class="font-display font-bold text-xl text-ink mb-3">Limitation de responsabilité</h2>
+        <p>
+          Allomalus s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site, dont elle se réserve le droit de corriger le contenu à tout moment et sans préavis.
+        </p>
+        <p class="mt-2">
+          Allomalus ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur le site. En conséquence, Allomalus décline toute responsabilité pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur le site.
+        </p>
+      </section>
+
+    </div>
+
+    <p class="mt-12 text-xs text-muted font-body">
+      Dernière mise à jour : avril 2026
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border bg-white py-8">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted font-body">
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-ink text-sm">{SITE.name}</span>
+        <span>&middot;</span>
+        <span>SIREN {SITE.siren}</span>
+        <span>&middot;</span>
+        <span>ORIAS {SITE.orias}</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/" class="hover:text-ink transition-colors">Accueil</a>
+        <a href="/blog/" class="hover:text-ink transition-colors">Blog</a>
+        <a href="/devis/" class="hover:text-ink transition-colors">Devis</a>
+      </div>
+    </div>
+  </footer>
+
+</Base>

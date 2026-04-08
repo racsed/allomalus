@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/config';
+import DevisAutoForm from '../components/DevisAutoForm';
+---
+
+<Base
+  title={`Devis assurance auto malussé et résilié | ${SITE.name}`}
+  description="Devis gratuit en 2 min pour conducteurs malussés et résiliés. Particuliers et professionnels. Réponse en 24h."
+  canonical={`${SITE.url}/devis`}
+>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 h-16">
+      <a href="/" class="font-display font-black text-xl text-ink tracking-tight">
+        {SITE.name}
+      </a>
+      <a
+        href="/"
+        class="inline-flex items-center gap-1.5 text-sm font-body text-muted hover:text-ink transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Retour
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-surface py-10 md:py-16">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <h1 class="font-display font-black text-3xl md:text-4xl text-ink leading-tight">
+        Votre devis en <span class="text-orange-500">2 minutes</span>
+      </h1>
+      <p class="mt-3 text-muted font-body text-base md:text-lg max-w-lg mx-auto">
+        Malussé, résilié, permis suspendu : remplissez le formulaire, on s'occupe du reste. Réponse sous 24h.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="py-10 md:py-14">
+    <div class="max-w-2xl mx-auto px-4">
+      <DevisAutoForm client:visible />
+    </div>
+  </section>
+
+  <!-- Trust badges -->
+  <section class="border-t border-border bg-surface py-10">
+    <div class="max-w-3xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <p class="font-display font-bold text-ink text-sm">Courtier enregistré ORIAS</p>
+        <p class="text-xs text-muted font-body">N° {SITE.orias}</p>
+      </div>
+
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <p class="font-display font-bold text-ink text-sm">0 EUR de frais de dossier</p>
+        <p class="text-xs text-muted font-body">Devis 100% gratuit</p>
+      </div>
+
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <p class="font-display font-bold text-ink text-sm">Réponse en 24h</p>
+        <p class="text-xs text-muted font-body">Même le week-end</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-border bg-white py-8">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted font-body">
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-ink text-sm">{SITE.name}</span>
+        <span>&middot;</span>
+        <span>SIREN {SITE.siren}</span>
+        <span>&middot;</span>
+        <span>ORIAS {SITE.orias}</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/mentions-legales/" class="hover:text-ink transition-colors">Mentions légales</a>
+        <a href="/" class="hover:text-ink transition-colors">Accueil</a>
+      </div>
+    </div>
+  </footer>
+
+</Base>
