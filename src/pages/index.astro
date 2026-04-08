@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE, PROFILS, VEHICULES, FAQ_ITEMS } from '../data/config';
+import AnimatedHero from '../components/AnimatedHero';
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -44,9 +45,9 @@ const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${enc
             🚗 Assurance auto risques aggravés
           </div>
 
-          <h1 class="font-display text-[clamp(38px,5.5vw,68px)] font-black leading-[0.9] tracking-[-3px] text-ink mb-5 anim-up d1">
-            Assurance auto<br/><span class="text-brand">malus</span> et <span class="text-brand">résilié</span>.
-          </h1>
+          <div class="mb-5 anim-up d1">
+            <AnimatedHero client:visible />
+          </div>
 
           <p class="text-lg text-muted leading-relaxed max-w-lg mb-8 anim-up d2">
             Malussé, résilié, permis suspendu, alcoolémie. On vous assure quand les autres refusent. Réponse en 24h.
