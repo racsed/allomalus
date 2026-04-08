@@ -109,7 +109,7 @@ const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${enc
       {[...Array(3)].map(() => (
         <span class="flex items-center gap-8">
           {PROFILS.map(p => (
-            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>{p.label}</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>{p.label}</span>
           ))}
         </span>
       ))}
@@ -277,7 +277,7 @@ const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${enc
       </h2>
       <p class="text-white/50 text-lg max-w-md mx-auto mb-10">Peu importe votre situation. On trouve une assurance auto. Toujours.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-3">
-        <a href="/devis/" class="inline-flex items-center justify-center gap-2 bg-brand text-ink font-bold text-lg px-10 py-5 rounded-lg hover:bg-brand-light transition-all">
+        <a href="/devis/" class="inline-flex items-center justify-center gap-2 bg-brand-neon text-ink font-bold text-lg px-10 py-5 rounded-lg hover:bg-brand-light transition-all">
           Devis gratuit &rarr;
         </a>
         <a href={waLink} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-bold text-lg px-8 py-5 rounded-lg hover:bg-white/20 transition-all border border-white/10">

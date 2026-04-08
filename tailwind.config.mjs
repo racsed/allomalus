@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: { DEFAULT: '#00DC82', light: '#6EE7B7', pale: '#F0FDF4', dark: '#00B86B' },
+        brand: { DEFAULT: '#059669', light: '#34D399', pale: '#F0FDF4', dark: '#047857', neon: '#00DC82' },
         accent: { DEFAULT: '#F59E0B', pale: '#FFFBEB' },
         ink: '#0A0A0A',
         surface: '#FAFAFA',
