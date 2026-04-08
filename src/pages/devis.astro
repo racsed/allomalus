@@ -10,6 +10,13 @@ import DevisAutoForm from '../components/DevisAutoForm';
   canonical={`${SITE.url}/devis`}
 >
 
+  <!-- Netlify hidden form -->
+  <form name="devis-auto" netlify netlify-honeypot="bot-field" hidden>
+    <input name="profil" /><input name="usage" />
+    <input name="vehicule-marque" /><input name="vehicule-modele" /><input name="vehicule-annee" />
+    <input name="conducteur-nom" /><input name="conducteur-prenom" /><input name="conducteur-email" /><input name="conducteur-telephone" />
+  </form>
+
   <!-- Navbar -->
   <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-border">
     <div class="max-w-5xl mx-auto flex items-center justify-between px-6 h-14">
@@ -20,59 +27,71 @@ import DevisAutoForm from '../components/DevisAutoForm';
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="bg-white py-12 md:py-16">
-    <div class="max-w-2xl mx-auto px-6 text-center">
-      <h1 class="font-display text-3xl md:text-4xl font-black tracking-[-1.5px] text-ink leading-tight">
+  <!-- Main content -->
+  <div class="max-w-5xl mx-auto px-6 py-10 md:py-16 lg:grid lg:grid-cols-[1fr_280px] lg:gap-12">
+
+    <!-- Left: Form -->
+    <div>
+      <h1 class="font-display text-2xl md:text-3xl font-black tracking-[-1px] text-ink mb-2">
         Votre devis auto <span class="text-brand">malus</span>
       </h1>
-      <p class="mt-3 text-muted text-base md:text-lg max-w-lg mx-auto">
-        Malussé, résilié, permis suspendu : remplissez le formulaire, on s'occupe du reste.
-      </p>
-    </div>
-  </section>
+      <p class="text-muted mb-8">3 étapes, quelques minutes. On revient vers vous avec une proposition.</p>
 
-  <!-- Netlify hidden form for bot detection -->
-  <form name="devis-auto" netlify netlify-honeypot="bot-field" hidden>
-    <input name="profil" /><input name="usage" /><input name="formule" /><input name="coef" />
-    <input name="vehicule-marque" /><input name="vehicule-modele" /><input name="vehicule-annee" /><input name="vehicule-immat" />
-    <input name="conducteur-nom" /><input name="conducteur-prenom" /><input name="conducteur-email" /><input name="conducteur-telephone" />
-    <input name="conducteur-naissance" /><input name="conducteur-permis" />
-  </form>
-
-  <!-- Form -->
-  <section class="bg-surface py-10 md:py-14">
-    <div class="max-w-2xl mx-auto px-6">
       <DevisAutoForm client:visible />
     </div>
-  </section>
 
-  <!-- Trust badges -->
-  <section class="border-t border-border bg-white py-10">
-    <div class="max-w-3xl mx-auto px-6 grid grid-cols-3 gap-6 text-center">
-      <div>
-        <div class="w-10 h-10 rounded-full bg-brand-pale flex items-center justify-center mx-auto mb-2">
-          <span class="text-brand text-lg">🛡️</span>
+    <!-- Right: Sidebar trust signals (desktop) -->
+    <aside class="hidden lg:block">
+      <div class="sticky top-24 space-y-5">
+        <!-- Trust card -->
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-xs font-bold text-muted uppercase tracking-wide mb-4">Pourquoi nous faire confiance</p>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-lg bg-brand/10 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-ink">Données sécurisées</p>
+                <p class="text-xs text-muted">Vos infos sont confidentielles</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-lg bg-brand/10 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-ink">Expert dédié</p>
+                <p class="text-xs text-muted">Un spécialiste étudie votre dossier</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-lg bg-brand/10 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-ink">Devis gratuit</p>
+                <p class="text-xs text-muted">Sans engagement, sans surprise</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="font-display font-bold text-ink text-sm">ORIAS</p>
-        <p class="text-xs text-muted">n° {SITE.orias}</p>
-      </div>
-      <div>
-        <div class="w-10 h-10 rounded-full bg-brand-pale flex items-center justify-center mx-auto mb-2">
-          <span class="text-brand text-lg">✓</span>
+
+        <!-- Testimonial -->
+        <div class="bg-white border border-border rounded-xl p-5">
+          <div class="text-brand text-xs tracking-[2px] mb-3">★★★★★</div>
+          <p class="text-sm text-ink leading-relaxed mb-3">"Après 3 refus, Allomalus m'a trouvé une offre. Je recommande."</p>
+          <p class="text-xs font-bold text-ink">Karim B.</p>
+          <p class="text-xs text-muted">Malussé 1.75</p>
         </div>
-        <p class="font-display font-bold text-ink text-sm">Devis gratuit</p>
-        <p class="text-xs text-muted">Sans engagement</p>
-      </div>
-      <div>
-        <div class="w-10 h-10 rounded-full bg-brand-pale flex items-center justify-center mx-auto mb-2">
-          <span class="text-brand text-lg">⚡</span>
+
+        <!-- ORIAS -->
+        <div class="text-center">
+          <p class="text-[10px] text-muted">Courtier enregistré ORIAS n° {SITE.orias}</p>
         </div>
-        <p class="font-display font-bold text-ink text-sm">Réponse rapide</p>
-        <p class="text-xs text-muted">Jours ouvrés</p>
       </div>
-    </div>
-  </section>
+    </aside>
+  </div>
 
   <!-- Footer -->
   <footer class="border-t border-border bg-white py-8">
@@ -82,7 +101,7 @@ import DevisAutoForm from '../components/DevisAutoForm';
         <a href="/mentions-legales/" class="hover:text-ink transition-colors">Mentions légales</a>
         <a href="/" class="hover:text-ink transition-colors">Accueil</a>
       </div>
-      <span>ORIAS {SITE.orias} · SIREN {SITE.siren}</span>
+      <span>ORIAS {SITE.orias}</span>
     </div>
   </footer>
 </Base>
