@@ -120,9 +120,9 @@ export default function DevisAutoForm() {
         </div>
 
         {/* Upload documents (optionnel) */}
-        <div className="border border-border rounded-xl p-5">
-          <p className="font-display text-sm font-bold text-ink mb-1">Accélérer le traitement</p>
-          <p className="text-xs text-muted mb-4">Envoyez vos documents maintenant (optionnel). On peut aussi vous les demander plus tard.</p>
+        <div className="border-2 border-brand/30 bg-brand-pale rounded-xl p-6">
+          <p className="font-display text-base font-bold text-ink mb-1">Gagnez du temps : envoyez vos documents</p>
+          <p className="text-sm text-muted mb-4">Optionnel, mais ça accélère le traitement de votre dossier.</p>
 
           <div className="space-y-2 mb-4">
             {['Permis de conduire (recto/verso)', 'Relevé d\'information', 'Carte grise'].map(doc => (
