@@ -33,15 +33,20 @@ export default function DevisAutoForm() {
   const [coef, setCoef] = useState('');
   const [vehicule, setVehicule] = useState({ marque: '', modele: '', annee: '', immatriculation: '' });
   const [conducteur, setConducteur] = useState({ nom: '', prenom: '', email: '', telephone: '', datePermis: '', dateNaissance: '' });
+  const [rgpd, setRgpd] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const progress = ((etape - 1) / 4) * 100;
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(conducteur.email);
+  const telValid = conducteur.telephone.replace(/\s/g, '').length >= 10;
 
   function canNext(): boolean {
     if (etape === 1) return !!profil;
     if (etape === 2) return !!usage && !!formule && !!coef;
     if (etape === 3) return !!vehicule.marque && !!vehicule.annee;
-    if (etape === 4) return !!conducteur.nom && !!conducteur.email && !!conducteur.telephone;
+    if (etape === 4) return !!conducteur.nom && emailValid && telValid && rgpd;
     return false;
   }
 
@@ -52,8 +57,28 @@ export default function DevisAutoForm() {
     if (etape > 1) setEtape((etape - 1) as Etape);
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    if (!canNext()) return;
+    setSubmitting(true);
+    try {
+      const body = new URLSearchParams({
+        'form-name': 'devis-auto',
+        profil, usage, formule, coef,
+        'vehicule-marque': vehicule.marque,
+        'vehicule-modele': vehicule.modele,
+        'vehicule-annee': vehicule.annee,
+        'vehicule-immat': vehicule.immatriculation,
+        'conducteur-nom': conducteur.nom,
+        'conducteur-prenom': conducteur.prenom,
+        'conducteur-email': conducteur.email,
+        'conducteur-telephone': conducteur.telephone,
+        'conducteur-naissance': conducteur.dateNaissance,
+        'conducteur-permis': conducteur.datePermis,
+      });
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() });
+    } catch { /* Netlify forms fallback */ }
     setSubmitted(true);
+    setSubmitting(false);
   }
 
   const btnCls = (active: boolean) =>
@@ -175,6 +200,13 @@ export default function DevisAutoForm() {
               <input type="date" value={conducteur.datePermis} onChange={e => setConducteur(p => ({ ...p, datePermis: e.target.value }))} className={inputCls} />
             </div>
           </div>
+          {/* RGPD */}
+          <label className="flex items-start gap-3 mt-6 cursor-pointer">
+            <input type="checkbox" checked={rgpd} onChange={e => setRgpd(e.target.checked)} className="mt-1 w-4 h-4 accent-brand" />
+            <span className="text-xs text-muted leading-relaxed">J'accepte que mes données soient traitées pour l'obtention d'un devis d'assurance. <a href="/mentions-legales/" className="text-brand hover:underline">Politique de confidentialité</a></span>
+          </label>
+          {conducteur.email && !emailValid && <p className="text-xs text-red-500 mt-2">Adresse email invalide</p>}
+          {conducteur.telephone && !telValid && <p className="text-xs text-red-500 mt-2">Numéro de téléphone invalide (10 chiffres min)</p>}
         </div>
       )}
 
@@ -188,7 +220,7 @@ export default function DevisAutoForm() {
             : 'bg-surface text-muted cursor-not-allowed'
         }`}
       >
-        {etape === 4 ? 'Recevoir mon devis gratuit' : 'Continuer'}
+        {submitting ? 'Envoi en cours...' : etape === 4 ? 'Recevoir mon devis gratuit' : 'Continuer'}
       </button>
 
       <p className="text-center text-[10px] text-muted mt-3">Gratuit, sans engagement, réponse sous 24h</p>

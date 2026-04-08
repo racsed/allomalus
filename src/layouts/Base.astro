@@ -27,9 +27,11 @@ const canonicalUrl = canonical.endsWith('/') ? canonical : `${canonical}/`;
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="allomalus." />
+  <meta property="og:image" content={`${SITE.url}/og-image.png`} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${SITE.url}/og-image.png`} />
   <meta name="theme-color" content="#00DC82" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <slot name="head" />

@@ -32,6 +32,14 @@ import DevisAutoForm from '../components/DevisAutoForm';
     </div>
   </section>
 
+  <!-- Netlify hidden form for bot detection -->
+  <form name="devis-auto" netlify netlify-honeypot="bot-field" hidden>
+    <input name="profil" /><input name="usage" /><input name="formule" /><input name="coef" />
+    <input name="vehicule-marque" /><input name="vehicule-modele" /><input name="vehicule-annee" /><input name="vehicule-immat" />
+    <input name="conducteur-nom" /><input name="conducteur-prenom" /><input name="conducteur-email" /><input name="conducteur-telephone" />
+    <input name="conducteur-naissance" /><input name="conducteur-permis" />
+  </form>
+
   <!-- Form -->
   <section class="bg-surface py-10 md:py-14">
     <div class="max-w-2xl mx-auto px-6">
