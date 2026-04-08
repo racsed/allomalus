@@ -120,7 +120,7 @@ export default function DevisAutoForm() {
         </div>
 
         {/* Upload documents (optionnel) */}
-        <p className="font-display text-lg font-bold text-ink text-center mb-2">Pour aller plus vite</p>
+        <p className="font-display text-xl font-bold text-brand text-center mb-2">Pour aller plus vite</p>
         <p className="text-sm text-muted text-center mb-5">Envoyez vos documents maintenant, on traite votre dossier en priorité.</p>
         <div className="border-2 border-brand/30 bg-brand-pale rounded-xl p-6">
 
