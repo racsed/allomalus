@@ -4,12 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: { DEFAULT: '#059669', light: '#34D399', pale: '#F0FDF4', dark: '#047857' },
+        brand: { DEFAULT: '#00DC82', light: '#6EE7B7', pale: '#F0FDF4', dark: '#00B86B' },
         accent: { DEFAULT: '#F59E0B', pale: '#FFFBEB' },
-        ink: '#1B3A2D',
-        surface: '#F7FAF8',
-        border: '#D5E2DA',
-        muted: '#5F7A6C',
+        ink: '#0A0A0A',
+        surface: '#FAFAFA',
+        border: '#E5E5E5',
+        muted: '#737373',
+        dark: '#111111',
       },
       fontFamily: {
         display: ['Satoshi', 'system-ui', 'sans-serif'],
