@@ -10,9 +10,9 @@ const steps = [
 ];
 
 const guarantees = [
-  { name: 'Tiers', price: 'Dès 45€/mois', features: ['Responsabilité civile', 'Défense pénale', 'Assistance panne 0 km', 'Protection juridique'], highlight: false },
-  { name: 'Tiers+', price: 'Dès 65€/mois', features: ['Tout Tiers inclus', 'Vol & tentative de vol', 'Incendie & explosion', 'Bris de glace', 'Catastrophes naturelles'], highlight: true },
-  { name: 'Tous risques', price: 'Dès 90€/mois', features: ['Tout Tiers+ inclus', 'Dommages tous accidents', 'Valeur à neuf 1 an', 'Véhicule de remplacement', 'Contenu du véhicule'], highlight: false },
+  { name: 'Tiers', price: 'Minimum légal', features: ['Responsabilité civile', 'Défense pénale', 'Assistance panne 0 km', 'Protection juridique'], highlight: false },
+  { name: 'Tiers+', price: 'Le plus demandé', features: ['Tout Tiers inclus', 'Vol et tentative de vol', 'Incendie et explosion', 'Bris de glace', 'Catastrophes naturelles'], highlight: true },
+  { name: 'Tous risques', price: 'Protection maximale', features: ['Tout Tiers+ inclus', 'Dommages tous accidents', 'Valeur a neuf 1 an', 'Véhicule de remplacement', 'Contenu du véhicule'], highlight: false },
 ];
 
 const reviews = [
@@ -24,12 +24,12 @@ const reviews = [
 ];
 
 const comparisons = [
-  { label: 'Frais de dossier', them: '150-300€', us: '0€' },
-  { label: 'Délai de réponse', them: '5-10 jours', us: 'Moins de 24h' },
-  { label: 'Profils refusés', them: 'Fréquent', us: 'Aucun refus' },
-  { label: 'Suivi personnalisé', them: 'Bot / standard', us: 'Expert dédié' },
+  { label: 'Frais de dossier', them: 'Oui', us: 'Aucun' },
+  { label: 'Délai de réponse', them: '5 a 10 jours', us: 'Moins de 24h' },
+  { label: 'Profils refusés', them: 'Fréquent', us: 'Tous acceptés' },
+  { label: 'Suivi personnalisé', them: 'Standardisé', us: 'Expert dédié' },
   { label: 'Démarche', them: 'Agence physique', us: '100% en ligne' },
-  { label: 'Transparence tarif', them: 'Opaque', us: 'Devis détaillé' },
+  { label: 'Accompagnement sinistre', them: 'Vous vous débrouillez', us: 'On gère pour vous' },
 ];
 
 const faqJsonLd = {
@@ -106,7 +106,7 @@ const faqJsonLd = {
       <a href="/" class="font-display font-bold text-2xl text-ink tracking-tight">allomalus<span class="text-brand">.</span></a>
       <div class="hidden md:flex items-center gap-8 text-sm font-body font-medium text-muted">
         <a href="#profils" class="hover:text-ink transition-colors">Profils</a>
-        <a href="#garanties" class="hover:text-ink transition-colors">Tarifs</a>
+        <a href="#garanties" class="hover:text-ink transition-colors">Formules</a>
         <a href="#faq" class="hover:text-ink transition-colors">FAQ</a>
         <a href="/blog/" class="hover:text-ink transition-colors">Blog</a>
       </div>
@@ -136,8 +136,8 @@ const faqJsonLd = {
             Obtenir mon devis gratuit
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </a>
-          <a href={"tel:" + SITE.phone.replace(/\s/g, '')} class="inline-flex items-center justify-center gap-2 bg-white hover:bg-surface border border-border text-ink font-display font-bold text-lg px-8 py-4 rounded-full transition-all hover:shadow-soft">
-            📞 {SITE.phone}
+          <a href="#garanties" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-surface border border-border text-ink font-display font-bold text-lg px-8 py-4 rounded-full transition-all hover:shadow-soft">
+            Voir les formules ↓
           </a>
         </div>
       </div>
@@ -352,7 +352,7 @@ const faqJsonLd = {
           <h4 class="font-display font-bold text-white text-sm mb-4">Navigation</h4>
           <ul class="space-y-2 text-sm">
             <li><a href="#profils" class="hover:text-white transition-colors">Nos profils</a></li>
-            <li><a href="#garanties" class="hover:text-white transition-colors">Tarifs &amp; garanties</a></li>
+            <li><a href="#garanties" class="hover:text-white transition-colors">Formules</a></li>
             <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
             <li><a href="/blog/" class="hover:text-white transition-colors">Blog</a></li>
             <li><a href="/devis/" class="hover:text-white transition-colors">Demander un devis</a></li>
@@ -367,13 +367,7 @@ const faqJsonLd = {
           </ul>
         </div>
         <div>
-          <h4 class="font-display font-bold text-white text-sm mb-4">Contact</h4>
-          <ul class="space-y-2 text-sm">
-            <li>📞 <a href={"tel:" + SITE.phone.replace(/\s/g, '')} class="hover:text-white transition-colors">{SITE.phone}</a></li>
-            <li>📧 <a href={"mailto:" + SITE.email} class="hover:text-white transition-colors">{SITE.email}</a></li>
-            <li class="leading-relaxed">📍 {SITE.address}</li>
-          </ul>
-          <h4 class="font-display font-bold text-white text-sm mt-6 mb-3">Partenaires</h4>
+          <h4 class="font-display font-bold text-white text-sm mb-4">Partenaires</h4>
           <ul class="space-y-1.5 text-sm">
             <li><a href="https://prossur.fr" target="_blank" rel="noopener" class="hover:text-white transition-colors">Prossur - Assurance pro BTP</a></li>
             <li><a href="https://formacourtage.fr" target="_blank" rel="noopener" class="hover:text-white transition-colors">FormaCourtage - Formation IAS</a></li>

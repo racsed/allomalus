@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'allomalus.',
   tagline: 'Assurance auto malussé et résilié',
-  phone: '01 85 10 56 67',
-  email: 'contact@allomalus.fr',
+  phone: '',
+  email: '',
   url: 'https://allomalus.fr',
   siren: '815 205 067',
   orias: '16 000 722',
