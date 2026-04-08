@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE, PROFILS, FAQ_ITEMS } from '../data/config';
+import { SITE, PROFILS, VEHICULES, FAQ_ITEMS } from '../data/config';
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -11,6 +11,8 @@ const faqJsonLd = {
     "acceptedAnswer": { "@type": "Answer", "text": item.a }
   }))
 };
+
+const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Bonjour, je cherche une assurance auto malus. Pouvez-vous m'aider ?")}`;
 ---
 
 <Base>
@@ -21,8 +23,8 @@ const faqJsonLd = {
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
       <a href="/" class="font-display text-xl font-black tracking-tight text-ink">allo<span class="text-brand">malus</span></a>
       <div class="hidden sm:flex items-center gap-6">
+        <a href="#vehicules" class="text-sm text-muted hover:text-ink transition-colors">Véhicules</a>
         <a href="#profils" class="text-sm text-muted hover:text-ink transition-colors">Profils</a>
-        <a href="#etapes" class="text-sm text-muted hover:text-ink transition-colors">Comment ça marche</a>
         <a href="#faq" class="text-sm text-muted hover:text-ink transition-colors">FAQ</a>
         <a href="/blog/" class="text-sm text-muted hover:text-ink transition-colors">Blog</a>
       </div>
@@ -33,52 +35,69 @@ const faqJsonLd = {
   </nav>
 
   <!-- ====== HERO ====== -->
-  <section class="bg-white pt-20 pb-24 lg:pt-28 lg:pb-32 relative overflow-hidden">
+  <section class="bg-white pt-16 pb-20 lg:pt-24 lg:pb-28 relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 border border-border bg-surface px-4 py-1.5 rounded-full text-xs font-bold text-muted mb-8 anim-up">
-          🚗 Assurance auto risques aggravés
-        </div>
-
-        <h1 class="font-display text-[clamp(40px,6vw,76px)] font-black leading-[0.9] tracking-[-3px] text-ink mb-6 anim-up d1">
-          Assurance auto<br/><span class="text-brand">malus</span> et <span class="text-brand">résilié</span>.
-        </h1>
-
-        <p class="text-lg text-muted leading-relaxed max-w-lg mx-auto mb-10 anim-up d2">
-          Malussé, résilié, permis suspendu, alcoolémie. On vous assure quand les autres refusent. Réponse en 24h.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 anim-up d3">
-          <a href="/devis/" class="group inline-flex items-center justify-center gap-3 bg-ink text-white font-bold text-base px-8 py-4 rounded-lg hover:bg-ink/80 transition-all">
-            Obtenir mon devis gratuit
-            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Social proof -->
-        <div class="flex items-center justify-center gap-3 text-sm text-muted anim-up d4">
-          <div class="flex -space-x-2">
-            {['K','S','D','F','M'].map((l, i) => (
-              <span class={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold text-white ${['bg-brand','bg-brand-dark','bg-emerald-600','bg-teal-600','bg-green-700'][i]}`}>{l}</span>
-            ))}
+      <div class="lg:grid lg:grid-cols-[1fr_380px] lg:gap-12 items-center">
+        <!-- Left -->
+        <div>
+          <div class="inline-flex items-center gap-2 border border-border bg-surface px-3 py-1.5 rounded-full text-xs font-bold text-muted mb-6 anim-up">
+            🚗 Assurance auto risques aggravés
           </div>
-          <span><strong class="text-ink">+850</strong> conducteurs assurés</span>
-        </div>
-      </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-4 gap-px bg-border rounded-xl overflow-hidden mt-16 max-w-2xl mx-auto anim-up d4">
-        {[
-          ['<24h', 'Réponse'],
-          ['100%', 'Acceptation'],
-          ['850+', 'Assurés'],
-          ['10 ans', 'Expérience'],
-        ].map(([val, label]) => (
-          <div class="bg-white py-6 text-center">
-            <div class="font-display text-2xl font-black text-ink">{val}</div>
-            <div class="text-[10px] text-muted uppercase tracking-[1.5px] font-bold mt-1">{label}</div>
+          <h1 class="font-display text-[clamp(38px,5.5vw,68px)] font-black leading-[0.9] tracking-[-3px] text-ink mb-5 anim-up d1">
+            Assurance auto<br/><span class="text-brand">malus</span> et <span class="text-brand">résilié</span>.
+          </h1>
+
+          <p class="text-lg text-muted leading-relaxed max-w-lg mb-8 anim-up d2">
+            Malussé, résilié, permis suspendu, alcoolémie. On vous assure quand les autres refusent. Réponse en 24h.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mb-8 anim-up d3">
+            <a href="/devis/" class="group inline-flex items-center justify-center gap-2 bg-ink text-white font-bold text-base px-8 py-4 rounded-lg hover:bg-ink/80 transition-all">
+              Obtenir mon devis gratuit
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href={waLink} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-border bg-white text-ink font-bold text-base px-6 py-4 rounded-lg hover:border-brand hover:text-brand transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
           </div>
-        ))}
+
+          <!-- Social proof -->
+          <div class="flex items-center gap-4 anim-up d4">
+            <div class="flex -space-x-2">
+              {['K','S','D','F','M'].map((l, i) => (
+                <span class={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold text-white ${['bg-brand','bg-brand-dark','bg-emerald-600','bg-teal-600','bg-green-700'][i]}`}>{l}</span>
+              ))}
+            </div>
+            <div class="text-sm text-muted">
+              <strong class="text-ink">+850</strong> conducteurs assurés
+              <div class="flex items-center gap-1 text-brand text-xs mt-0.5">★★★★★ <span class="text-muted">4.8/5</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: image -->
+        <div class="hidden lg:block anim-up d4">
+          <div class="relative">
+            <img src="/blog/images/voiture-route.jpg" alt="Voiture sur la route" class="rounded-2xl w-full h-[400px] object-cover" />
+            <!-- Floating badges -->
+            <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lift border border-border px-4 py-3 flex items-center gap-3">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <p class="text-sm font-bold text-ink">Réponse 24h</p>
+                <p class="text-xs text-muted">Même le week-end</p>
+              </div>
+            </div>
+            <div class="absolute -top-4 -right-4 bg-white rounded-xl shadow-lift border border-border px-4 py-3 flex items-center gap-3">
+              <span class="text-2xl">🛡️</span>
+              <div>
+                <p class="text-sm font-bold text-ink">100% acceptation</p>
+                <p class="text-xs text-muted">Aucun refus</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -88,28 +107,46 @@ const faqJsonLd = {
     <div class="flex gap-12 animate-[scroll_20s_linear_infinite] w-max text-xs font-bold uppercase tracking-[2px]">
       {[...Array(3)].map(() => (
         <span class="flex items-center gap-8">
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>Malussé</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>Résilié</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>Permis suspendu</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>Alcoolémie</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>Jeune conducteur</span>
-          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>Véhicule pro</span>
+          {PROFILS.map(p => (
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span>{p.label}</span>
+          ))}
         </span>
       ))}
     </div>
   </div>
 
+  <!-- ====== VEHICULES ====== -->
+  <section id="vehicules" class="bg-white py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Véhicules</p>
+      <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.9] text-ink mb-14">
+        Quel véhicule <span class="text-brand">assurer</span> ?
+      </h2>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {VEHICULES.map(v => (
+          <a href="/devis/" class="group border border-border rounded-xl p-6 hover:border-brand hover:-translate-y-1 hover:shadow-soft transition-all block text-center">
+            <span class="text-4xl block mb-3 group-hover:scale-110 transition-transform">{v.emoji}</span>
+            <h3 class="font-display text-lg font-bold text-ink">{v.label}</h3>
+            <p class="text-xs text-muted mt-1 mb-3">{v.desc}</p>
+            <p class="text-sm font-bold text-brand">A partir de {v.from} €/mois</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ====== PROFILS ====== -->
-  <section id="profils" class="bg-white py-24 lg:py-32">
+  <section id="profils" class="bg-surface py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
       <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Profils</p>
       <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.9] text-ink mb-14">
-        Votre <span class="text-brand">profil auto</span>.<br/>Notre spécialité.
+        Votre <span class="text-brand">situation</span>. Notre spécialité.
       </h2>
 
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
         {PROFILS.map(p => (
-          <a href="/devis/" class="group border border-border rounded-xl p-6 hover:border-brand transition-all block">
+          <a href="/devis/" class="group bg-white border border-border rounded-xl p-6 hover:border-brand transition-all block">
             <span class="text-3xl block mb-3">{p.emoji}</span>
             <h3 class="font-display text-base font-bold text-ink">{p.label}</h3>
             <p class="text-sm text-muted mt-1">{p.desc}</p>
@@ -121,9 +158,9 @@ const faqJsonLd = {
   </section>
 
   <!-- ====== ETAPES ====== -->
-  <section id="etapes" class="bg-surface py-24 lg:py-32">
+  <section id="etapes" class="bg-white py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Processus</p>
+      <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Comment ça marche</p>
       <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.9] text-ink mb-14">
         <span class="text-brand">Simple</span>. <span class="text-brand">Rapide</span>. <span class="text-brand">Efficace</span>.
       </h2>
@@ -135,7 +172,7 @@ const faqJsonLd = {
           ['03','📩','Votre offre','Une ou plusieurs propositions adaptées dans votre boite mail sous 24h.'],
           ['04','🚗','Vous roulez','Vous signez en ligne. Carte verte immédiate.'],
         ].map(([n, ico, title, desc]) => (
-          <div class="bg-white border border-border rounded-xl p-7">
+          <div class="bg-surface border border-border rounded-xl p-7">
             <span class="font-display text-4xl font-black text-brand/20 block mb-3">{n}</span>
             <span class="text-2xl block mb-3">{ico}</span>
             <h3 class="font-display text-base font-bold text-ink mb-2">{title}</h3>
@@ -143,22 +180,19 @@ const faqJsonLd = {
           </div>
         ))}
       </div>
-
-      <div class="text-center mt-14">
-        <a href="/devis/" class="inline-flex items-center gap-3 bg-ink text-white font-bold text-base px-8 py-4 rounded-lg hover:bg-ink/80 transition-all">
-          Commencer maintenant &rarr;
-        </a>
-      </div>
     </div>
   </section>
 
   <!-- ====== TEMOIGNAGES ====== -->
-  <section class="bg-white py-24 lg:py-32">
+  <section class="bg-surface py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Avis</p>
-      <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.9] text-ink mb-14">
+      <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Avis clients</p>
+      <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] leading-[0.9] text-ink mb-4">
         Ils étaient dans <span class="text-brand">l'impasse</span>.
       </h2>
+      <p class="text-muted mb-14 flex items-center gap-2">
+        <span class="text-brand text-sm">★★★★★</span> <strong class="text-ink">4.8/5</strong> sur Google
+      </p>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {[
@@ -168,7 +202,7 @@ const faqJsonLd = {
           ['"Permis depuis 2 ans, déjà un malus. Personne ne voulait de moi."','Fatima L.','Jeune conductrice'],
           ['"Utilitaire résilié. Devis le lendemain, couvert dans la semaine."','Stéphane R.','Artisan BTP'],
         ].map(([txt, name, profil]) => (
-          <div class="border border-border rounded-xl p-6 hover:border-brand/30 transition-colors">
+          <div class="bg-white border border-border rounded-xl p-6 hover:border-brand/30 transition-colors">
             <div class="text-brand text-xs tracking-[3px] mb-4">★★★★★</div>
             <p class="text-sm text-ink leading-relaxed mb-5">{txt}</p>
             <p class="text-sm font-bold text-ink">{name}</p>
@@ -180,7 +214,7 @@ const faqJsonLd = {
   </section>
 
   <!-- ====== COMPARATIF ====== -->
-  <section class="bg-surface py-24 lg:py-32">
+  <section class="bg-white py-24 lg:py-32">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-14">
         <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">Pourquoi nous</p>
@@ -190,7 +224,7 @@ const faqJsonLd = {
       </div>
 
       <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-white border border-border rounded-xl p-8">
+        <div class="bg-surface border border-border rounded-xl p-8">
           <p class="text-xs font-bold uppercase tracking-[2px] text-muted mb-6">Assureur classique</p>
           {['Réponse en 5 a 10 jours','Profils refusés fréquemment','Suivi standardisé','Déplacement en agence','Vous gérez les sinistres seul'].map(f => (
             <p class="text-sm py-2 flex items-center gap-3 text-muted">
@@ -200,7 +234,7 @@ const faqJsonLd = {
         </div>
         <div class="bg-white border-2 border-brand rounded-xl p-8">
           <p class="text-xs font-bold uppercase tracking-[2px] text-brand mb-6">Allomalus</p>
-          {['Réponse en moins de 24h','Tous les profils acceptés','Expert dédié a votre dossier','100% en ligne','On gère les sinistres pour vous'].map(f => (
+          {['Réponse en moins de 24h','Tous les profils acceptés','Expert dédié a votre dossier','100% en ligne ou WhatsApp','On gère les sinistres pour vous'].map(f => (
             <p class="text-sm py-2 flex items-center gap-3 text-ink">
               <span class="text-brand font-bold">✓</span>{f}
             </p>
@@ -214,7 +248,7 @@ const faqJsonLd = {
   </section>
 
   <!-- ====== FAQ ====== -->
-  <section id="faq" class="bg-white py-24 lg:py-32">
+  <section id="faq" class="bg-surface py-24 lg:py-32">
     <div class="max-w-3xl mx-auto px-6">
       <p class="text-xs font-bold uppercase tracking-[3px] text-brand mb-4">FAQ</p>
       <h2 class="font-display text-[clamp(30px,4.5vw,48px)] font-black tracking-[-2px] text-ink mb-14">
@@ -222,7 +256,7 @@ const faqJsonLd = {
       </h2>
       <div class="space-y-2">
         {FAQ_ITEMS.map(item => (
-          <details class="group border border-border rounded-xl overflow-hidden">
+          <details class="group border border-border rounded-xl overflow-hidden bg-white">
             <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-ink hover:text-brand transition-colors">
               {item.q}
               <svg class="w-4 h-4 text-muted shrink-0 ml-4 group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
@@ -241,9 +275,14 @@ const faqJsonLd = {
         Prêt a reprendre la <span class="text-brand">route</span> ?
       </h2>
       <p class="text-white/50 text-lg max-w-md mx-auto mb-10">Peu importe votre situation. On trouve une assurance auto. Toujours.</p>
-      <a href="/devis/" class="inline-flex items-center gap-3 bg-brand text-ink font-bold text-lg px-10 py-5 rounded-lg hover:bg-brand-light transition-all">
-        Obtenir mon devis gratuit &rarr;
-      </a>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <a href="/devis/" class="inline-flex items-center justify-center gap-2 bg-brand text-ink font-bold text-lg px-10 py-5 rounded-lg hover:bg-brand-light transition-all">
+          Devis gratuit &rarr;
+        </a>
+        <a href={waLink} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-bold text-lg px-8 py-5 rounded-lg hover:bg-white/20 transition-all border border-white/10">
+          WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
@@ -268,6 +307,11 @@ const faqJsonLd = {
       </div>
     </div>
   </footer>
+
+  <!-- ====== WHATSAPP FLOATING ====== -->
+  <a href={waLink} target="_blank" rel="noopener" class="fixed bottom-20 sm:bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lift hover:scale-110 transition-transform" aria-label="Contacter par WhatsApp">
+    <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <!-- ====== MOBILE STICKY CTA ====== -->
   <div class="fixed bottom-0 left-0 right-0 z-40 sm:hidden p-3 bg-white/95 backdrop-blur-lg border-t border-border">
