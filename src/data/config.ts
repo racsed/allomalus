@@ -3,7 +3,7 @@ export const SITE = {
   tagline: 'Assurance auto malussé et résilié',
   phone: '',
   email: '',
-  whatsapp: '+33631825992',
+  whatsapp: '',
   url: 'https://allomalus.fr',
   siren: '815 205 067',
   orias: '16 000 722',
