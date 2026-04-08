@@ -104,19 +104,6 @@ const waLink = `https://wa.me/${SITE.whatsapp.replace(/[^0-9]/g, '')}?text=${enc
     </div>
   </section>
 
-  <!-- ====== TICKER ====== -->
-  <div class="bg-ink text-white/40 py-3 overflow-hidden">
-    <div class="flex gap-12 animate-[scroll_20s_linear_infinite] w-max text-xs font-bold uppercase tracking-[2px]">
-      {[...Array(3)].map(() => (
-        <span class="flex items-center gap-8">
-          {PROFILS.map(p => (
-            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>{p.label}</span>
-          ))}
-        </span>
-      ))}
-    </div>
-  </div>
-
   <!-- ====== VEHICULES ====== -->
   <section id="vehicules" class="bg-white py-24 lg:py-32">
     <div class="max-w-6xl mx-auto px-6">
